@@ -6,7 +6,7 @@ require_once(APPPATH . 'controllers/ALBUMSO.php');
 class Test extends ALBUMSO {
 
     public function index() {
-       echo 'Hello';
+       echo 'Hello Tungns';
     }
     
     
