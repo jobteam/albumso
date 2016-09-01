@@ -11,18 +11,21 @@ if (!defined('BASEPATH')) {
  */
 class Q100_model extends CI_Model {
 
-    //put your code here
+    private $db;
 
-    public function qkub_inserttabq100($pnPQ100, $pvQV101, $pvQV102, $pvQV106, $pnFS200, $pnFB050, $pnFN100, $pnFK100, $pvSOURC, $pvLOGIN) {
-        $query = "SELECT qkub_inserttabq100('$pnPQ100', '$pvQV101', '$pvQV102', '$pvQV106', '$pnFS200', '$pnFB050', '$pnFN100', '$pnFK100', '$pvSOURC', '$pvLOGIN')";
-        $result = $this->db->query($query);
-        return $result ? get_record_value($result) : 0;
+    function __construct() {
+        // Call the Model constructor
+        parent::__construct();
+        $this->db = $this->mongo_db->getDb();
     }
-    
-    public function qkub_checktabq100($pvQV101, $pvQV102,$pvCTYPE, $pvLOGIN) {
-        $query = "CALL qkub_checktabq100('$pvQV101', '$pvQV102', '$pvCTYPE',  '$pvLOGIN')";
-        $result = $this->db->query($query);
-        return $result->result_array();
+
+    public function qalbumso_checkoftabq100($pvQV101, $pvQV102, $pvCTYPE) {
+        try {
+            $response = $this->db->execute("qalbumso_checkoftabq100('$pvQV101', '$pvQV102', '$pvCTYPE')");
+            return $response;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
     }
 
 }
