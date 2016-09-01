@@ -21,6 +21,10 @@ class Provider extends ALBUMSO {
     public function detail() {
        $this->loadTemplateView('provider_detail',array());
     }
+    
+    public function profile() {
+       $this->loadTemplateView('provider_profile',array());
+    }
 
     private function loadTemplateView($page, $data) {
         $this->load->view('header');

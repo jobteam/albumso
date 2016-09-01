@@ -33,5 +33,19 @@ class Test extends ALBUMSO {
         $this->load->model('k100_model', 'K100_MODEL');
         return $this->K100_MODEL->kalbumso_inserttabk100(0, 'Giann Pham Gia', 'email', 'dang o goi nao', 'Dia chi', 'Phone', 1, 2, 3, 'LOGIN');
     }
+    
+    //////////////////////thopp test nhé....
+    
+    
+    public function thopp(){
+        var_dump($this->balbumso_inserttabb050());
+    }
+    private function balbumso_inserttabb050(){
+        $this->load->model('B050_model', 'B050_MODEL');
+        $arrBV053 = array("name" => "thopp1", "age" => 18);
+        $arrBV055 = array("name" => "thopp2", "age" => 18);
+        $arrBV057 = array("name" => "thopp3", "age" => 18);
+        return $this->B050_MODEL->balbumso_inserttabb050(0, 'ten package co dau', 'ten package khong dau', $arrBV053, 'rating', $arrBV055, 'image mac dinh show web', $arrBV057, 'chi tiet noi dung', 200, 1, 'topptest');
+    }
 
 }

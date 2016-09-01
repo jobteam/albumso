@@ -6,11 +6,17 @@ require_once(APPPATH . 'controllers/ALBUMSO.php');
 class Products extends ALBUMSO {
 
     public function index() {
-       $this->load->view('index');
+       $this->loadTemplateView('products_view',array());
     }
 
-    public function tungns() {
-        $this->load->view('welcome_message');
+    public function detail() {
+       $this->loadTemplateView('products_detail',array());
+    }
+
+    private function loadTemplateView($page, $data) {
+        $this->load->view('header');
+        $this->load->view($page, $data);
+        $this->load->view('footer');
     }
 
 }
