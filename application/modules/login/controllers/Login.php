@@ -19,12 +19,13 @@ class Login extends ALBUMSO {
         if (isset($data['SUBMITLOGIN'])) {
             $data['QV101'] = $data['EMAIL'];
             $data['QV102'] = md5($data['PASSWORD']);
-            $data['CTYPE'] = $data['TYPELOGIN'];
-            $result = $this->qalbumso_checkoftabq100($data);
-            var_dump($result);
-            die;
+            if($data['TYPELOGIN'] == 'P'){
+                $result = $this->admin_checkproviderlogin($data);
+            }else{
+                $result = $this->admin_checkuserlogin($data);
+            }
+            
             if (count($result) > 0) {
-                $result = $result[0];
                 $result['status_login'] = 1; //login thanh cong
                 $_SESSION['user'] = $result;
                 redirect(base_url() . 'home');
@@ -37,18 +38,18 @@ class Login extends ALBUMSO {
 
     public function registry() {
         $data = $_POST;
-
         if (isset($data['SUBMITRESGIS'])) {
+            $data['QV102'] = md5($data['PASSWORD']);
             if ($data['TYPEREGIS'] == 1) {
-                $FK100 = $this->kkub_inserttabk100($data);
-                if ($FK100 > 0) {
+                $result = $this->kkub_inserttabk100($data);
+                if ($result > 0) {
                     redirect(base_url() . 'login');
                 } else {
                     $data['dataerror'] = 'Registry failed!';
                 }
             } else {
-                $FN100 = $this->nkub_inserttabn100($data);
-                if ($FN100 > 0) {
+                $result = $this->nalbumso_inserttabn100($data);
+                if ($result > 0) {
                     redirect(base_url() . 'login');
                 } else {
                     $data['dataerror'] = 'Registry failed!';
@@ -73,11 +74,16 @@ class Login extends ALBUMSO {
         redirect(base_url() . 'login');
     }
 
-    private function qalbumso_checkoftabq100($data) {
+    private function admin_checkproviderlogin($data) {
         $pvQV101 = isset($data['QV101']) ? $data['QV101'] : '';
         $pvQV102 = isset($data['QV102']) ? $data['QV102'] : '';
-        $pvCTYPE = isset($data['CTYPE']) ? $data['CTYPE'] : 'C';
-        return $this->Q100_MODEL->qalbumso_checkoftabq100($pvQV101, $pvQV102, $pvCTYPE);
+        return $this->Q100_MODEL->admin_checkproviderlogin($pvQV101, $pvQV102,'');
+    }
+    
+    private function admin_checkuserlogin($data) {
+        $pvQV101 = isset($data['QV101']) ? $data['QV101'] : '';
+        $pvQV102 = isset($data['QV102']) ? $data['QV102'] : '';
+        return $this->Q100_MODEL->admin_checkuserlogin($pvQV101, $pvQV102,'');
     }
 
     private function qkub_inserttabq100($data) {
@@ -107,28 +113,24 @@ class Login extends ALBUMSO {
         $pvKV103 = isset($data['KV103']) ? $data['KV103'] : 'FREE';
         $pvKV104 = isset($data['KV104']) ? $data['KV104'] : '';
         $pvKV105 = isset($data['KV105']) ? $data['KV105'] : '';
+        $pvQV102 = isset($data['QV102']) ? $data['QV102'] : '';
         $pnFN750 = isset($data['FN750']) ? $data['FN750'] : 0;
         $pnFN800 = isset($data['FN800']) ? $data['FN800'] : 0;
         $pnFN850 = isset($data['FN850']) ? $data['FN850'] : 0;
         $pvLOGIN = isset($data['LOGIN']) ? $data['LOGIN'] : 'LOGIN';
-        return $this->K100_MODEL->kalbumso_inserttabk100($pnPK100, $pvKV101, $pvKV102, $pvKV103, $pvKV104, $pvKV105, $pnFN750, $pnFN800, $pnFN850, $pvLOGIN);
+        return $this->K100_MODEL->kalbumso_inserttabk100($pnPK100, $pvKV101, $pvKV102, $pvKV103, $pvKV104, $pvKV105,$pvQV102, $pnFN750, $pnFN800, $pnFN850, $pvLOGIN);
     }
 
-    private function nkub_inserttabn100($data) {
+    private function nalbumso_inserttabn100($data) {
         $pnPN100 = isset($data['PN100']) ? $data['PN100'] : 0;
         $pvNV101 = isset($data['NV101']) ? $data['NV101'] : '';
         $pvNV102 = isset($data['NV102']) ? $data['NV102'] : '';
-        $pvNV103 = isset($data['NV103']) ? $data['NV103'] : '';
-        $pvNV106 = isset($data['NV106']) ? $data['NV106'] : '';
-        $pvNV107 = isset($data['NV107']) ? $data['NV107'] : '';
-        $pvNV108 = isset($data['NV108']) ? $data['NV108'] : '';
-        $pnNN109 = isset($data['NN109']) ? $data['NN109'] : 0;
-        $pnNN110 = isset($data['NN110']) ? $data['NN110'] : 0;
-        $pnNN111 = isset($data['NN111']) ? $data['NN111'] : 0;
-        $pnFN600 = isset($data['FN600']) ? $data['FN600'] : 0;
-        $pnFK100 = isset($data['FK100']) ? $data['FK100'] : 0;
+        $pvNV103 = isset($data['NV103']) ? $data['NV103'] : 0;
+        $pvNV104 = isset($data['NV104']) ? $data['NV104'] : '';
+        $pvNV105 = isset($data['NV105']) ? $data['NV105'] : '';
+        $pvQV102 = isset($data['QV102']) ? $data['QV102'] : '';
         $pvLOGIN = isset($data['LOGIN']) ? $data['LOGIN'] : '';
-        return $this->N100_MODEL->nkub_inserttabn100($pnPN100, $pvNV101, $pvNV102, $pvNV103, $pvNV106, $pvNV107, $pvNV108, $pnNN109, $pnNN110, $pnNN111, $pnFN600, $pnFK100, $pvLOGIN);
+        return $this->N100_MODEL->nalbumso_inserttabn100($pnPN100, $pvNV101, $pvNV102, $pvNV103, $pvNV104, $pvNV105, $pvQV102, $pvLOGIN);
     }
 
     private function loadTemplateView($page, $data) {

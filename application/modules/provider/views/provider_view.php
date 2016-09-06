@@ -26,7 +26,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 tp-title">
-                <h2>(12) Vendor List View </h2>
+                <h2>(<?php echo isset($lstK100) ? count($lstK100) : 0  ?>) Provider List View </h2>
             </div>
         </div>
         <div class="row">
@@ -37,8 +37,8 @@
                     </div>
                     <form>
                         <div class="col-md-12 form-group">
-                           <label class="control-label" for="venuetype">Name</label>
-                           <input id="name-one" name="name" type="text" placeholder="Name" class="form-control input-md" required="">
+                            <label class="control-label" for="venuetype">Name</label>
+                            <input id="name-one" name="name" type="text" placeholder="Name" class="form-control input-md" required="">
                         </div>
                         <div class="col-md-12 form-group">
                             <label class="control-label" for="venuetype">Venue Type</label>
@@ -147,163 +147,41 @@
             </div>
             <div class="col-md-9">
                 <div class="row">
+                    <?php foreach ($lstK100 as $k100) :  ?>
+                        <div class="col-md-12 vendor-box vendor-box-grid"><!-- venue box start-->
+                            <div class="row">
+                                <div class="col-md-6 no-right-pd">
+                                    <div class="vendor-image"><!-- venue pic --> 
+                                        <a href="#"><img src="<?php echo base_url() ?>public_html/images/vendor-1.jpg" alt="wedding venue" class="img-responsive"></a> 
+                                        <div class="favourite-bg"><a href="#" class=""><i class="fa fa-heart"></i></a></div>
+                                    </div>
+                                </div>
+                                <!-- /.venue pic -->
+                                <div class=" col-md-6 vendor-detail"><!-- venue details -->
+                                    <div class="caption"><!-- caption -->
+                                        <h2><a href="<?php echo base_url() ?>provider/detail/<?php echo $k100['_id']; ?>" class="title"><?php echo $k100['KV101']; ?></a></h2>
+                                        <p class="location"><i class="fa fa-map-marker"></i> <?php echo $k100['FN800']; ?></p>
+                                        <div class="rating pull-left"> 
+                                            <i class="fa fa-star"></i> 
+                                            <i class="fa fa-star"></i> 
+                                            <i class="fa fa-star"></i> 
+                                            <i class="fa fa-star"></i> 
+                                            <i class="fa fa-star-o"></i> 
+                                            <span class="rating-count">(22)</span> 
+                                        </div>
+                                    </div>
+                                    <!-- /.caption -->
+                                    <div class="vendor-price">
+                                        <div class="price"><a href="<?php echo base_url() ?>provider/detail/<?php echo $k100['_id']; ?>">Xem Album</a></div>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div class="col-md-12 vendor-box vendor-box-grid"><!-- venue box start-->
-                        <div class="row">
-                            <div class="col-md-6 no-right-pd">
-                                <div class="vendor-image"><!-- venue pic --> 
-                                    <a href="#"><img src="<?php echo base_url() ?>public_html/images/vendor-1.jpg" alt="wedding venue" class="img-responsive"></a> 
-                                    <div class="favourite-bg"><a href="#" class=""><i class="fa fa-heart"></i></a></div>
-                                </div>
-                            </div>
-                            <!-- /.venue pic -->
-                            <div class=" col-md-6 vendor-detail"><!-- venue details -->
-                                <div class="caption"><!-- caption -->
-                                    <h2><a href="<?php echo base_url() ?>provider/detail" class="title">Venue Vendor Title</a></h2>
-                                    <p class="location"><i class="fa fa-map-marker"></i> Street Address, Name of Town, 12345, Country.</p>
-                                    <div class="rating pull-left"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="rating-count">(22)</span> </div>
-                                </div>
-                                <!-- /.caption -->
-                                <div class="vendor-price">
-                                    <div class="price"><a href="<?php echo base_url() ?>provider/detail">Xem Album</a></div>
-                                </div>
-                            </div>
+                            <!-- venue details --> 
+
                         </div>
-
-                        <!-- venue details --> 
-
-                    </div>
-                    <!-- /.venue box start-->
-                    <div class="col-md-12 vendor-box vendor-box-grid"><!-- venue box start-->
-                        <div class="row">
-                            <div class="col-md-6 no-right-pd">
-                                <div class="  vendor-image"><!-- venue pic --> 
-                                    <a href="#"><img src="<?php echo base_url() ?>public_html/images/vendor-2.jpg" alt="wedding venue" class="img-responsive"></a> 
-                                    <div class="favourite-bg"><a href="#" class=""><i class="fa fa-heart"></i></a></div>
-                                </div>
-                            </div>
-                            <!-- /.venue pic -->
-                            <div class=" col-md-6 vendor-detail"><!-- venue details -->
-                                <div class="caption"><!-- caption -->
-                                    <h2><a href="<?php echo base_url() ?>provider/detail" class="title">Venue Vendor Title</a></h2>
-                                    <p class="location"><i class="fa fa-map-marker"></i> Street Address, Name of Town, 12345, Country.</p>
-                                    <div class="rating pull-left"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="rating-count">(22)</span> </div>
-                                </div>
-                                <!-- /.caption -->
-                                <div class="vendor-price">
-                                    <div class="price"><a href="<?php echo base_url() ?>provider/detail">Xem Album</a></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- venue details --> 
-
-                    </div>
-                    <!-- /.venue box start-->
-                    <div class="col-md-12 vendor-box vendor-box-grid"><!-- venue box start-->
-                        <div class="row">
-                            <div class="col-md-6 no-right-pd">
-                                <div class="  vendor-image"><!-- venue pic --> 
-                                    <a href="#"><img src="<?php echo base_url() ?>public_html/images/vendor-6.jpg" alt="wedding venue" class="img-responsive"></a>
-                                    <div class="favourite-bg"><a href="#" class=""><i class="fa fa-heart"></i></a></div>
-                                </div>
-                            </div>
-                            <!-- /.venue pic -->
-                            <div class=" col-md-6 vendor-detail"><!-- venue details -->
-                                <div class="caption"><!-- caption -->
-                                    <h2><a href="<?php echo base_url() ?>provider/detail" class="title">Venue Vendor Title</a></h2>
-                                    <p class="location"><i class="fa fa-map-marker"></i> Street Address, Name of Town, 12345, Country.</p>
-                                    <div class="rating pull-left"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="rating-count">(22)</span> </div>
-                                </div>
-                                <!-- /.caption -->
-                                <div class="vendor-price">
-                                    <div class="price"><a href="<?php echo base_url() ?>provider/detail">Xem Album</a></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- venue details --> 
-
-                    </div>
-                    <!-- /.venue box start-->
-                    <div class="col-md-12 vendor-box vendor-box-grid"><!-- venue box start-->
-                        <div class="row">
-                            <div class="col-md-6 no-right-pd">
-                                <div class="  vendor-image"><!-- venue pic --> 
-                                    <a href="#"><img src="<?php echo base_url() ?>public_html/images/vendor-3.jpg" alt="wedding venue" class="img-responsive"></a>
-                                    <div class="favourite-bg"><a href="#" class=""><i class="fa fa-heart"></i></a></div>
-                                </div>
-                            </div>
-                            <!-- /.venue pic -->
-                            <div class=" col-md-6 vendor-detail"><!-- venue details -->
-                                <div class="caption"><!-- caption -->
-                                    <h2><a href="<?php echo base_url() ?>provider/detail" class="title">Venue Vendor Title</a></h2>
-                                    <p class="location"><i class="fa fa-map-marker"></i> Street Address, Name of Town, 12345, Country.</p>
-                                    <div class="rating pull-left"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="rating-count">(22)</span> </div>
-                                </div>
-                                <!-- /.caption -->
-                                <div class="vendor-price">
-                                    <div class="price"><a href="<?php echo base_url() ?>provider/detail">Xem Album</a></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- venue details --> 
-
-                    </div>
-                    <div class="col-md-12 vendor-box vendor-box-grid"><!-- venue box start-->
-                        <div class="row">
-                            <div class="col-md-6 no-right-pd">
-                                <div class="  vendor-image"><!-- venue pic --> 
-                                    <a href="#"><img src="<?php echo base_url() ?>public_html/images/vendor-4.jpg" alt="wedding venue" class="img-responsive"></a>
-                                    <div class="favourite-bg"><a href="#" class=""><i class="fa fa-heart"></i></a></div>
-                                </div>
-                            </div>
-                            <!-- /.venue pic -->
-                            <div class=" col-md-6 vendor-detail"><!-- venue details -->
-                                <div class="caption"><!-- caption -->
-                                    <h2><a href="<?php echo base_url() ?>provider/detail" class="title">Venue Vendor Title</a></h2>
-                                    <p class="location"><i class="fa fa-map-marker"></i> Street Address, Name of Town, 12345, Country.</p>
-                                    <div class="rating pull-left"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="rating-count">(22)</span> </div>
-                                </div>
-                                <!-- /.caption -->
-                                <div class="vendor-price">
-                                    <div class="price"><a href="<?php echo base_url() ?>provider/detail">Xem Album</a></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- venue details --> 
-
-                    </div>
-                    <!-- /.venue box start--> 
-                    <!-- /.venue box start-->
-                    <div class="col-md-12 vendor-box vendor-box-grid"><!-- venue box start-->
-                        <div class="row">
-                            <div class="col-md-6 no-right-pd">
-                                <div class="  vendor-image"><!-- venue pic --> 
-                                    <a href="#"><img src="<?php echo base_url() ?>public_html/images/vendor-5.jpg" alt="wedding venue" class="img-responsive"></a>
-                                    <div class="favourite-bg"><a href="#" class=""><i class="fa fa-heart"></i></a></div>
-                                </div>
-                            </div>
-                            <!-- /.venue pic -->
-                            <div class=" col-md-6 vendor-detail"><!-- venue details -->
-                                <div class="caption"><!-- caption -->
-                                    <h2><a href="<?php echo base_url() ?>provider/detail" class="title">Venue Vendor Title</a></h2>
-                                    <p class="location"><i class="fa fa-map-marker"></i> Street Address, Name of Town, 12345, Country.</p>
-                                    <div class="rating pull-left"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="rating-count">(22)</span> </div>
-                                </div>
-                                <!-- /.caption -->
-                                <div class="vendor-price">
-                                    <div class="price"><a href="<?php echo base_url() ?>provider/detail">Xem Album</a></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- venue details --> 
-
-                    </div>
-                    <!-- /.venue box start-->
+                        <!-- /.venue box start-->
+                    <?php endforeach; ?>
 
                     <div class="col-md-12 tp-pagination">
                         <ul class="pagination">

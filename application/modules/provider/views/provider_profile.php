@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="page-header">
-                    <h1>Circle Plazz Wedding Vendor</h1>
+                    <h1><?php echo isset($lstK100[0]['KV101']) ? $lstK100[0]['KV101'] : '' ?></h1>
                 </div>
             </div>
         </div>
@@ -15,7 +15,7 @@
             <div class="col-md-8">
                 <ol class="breadcrumb">
                     <li><a href="#">Home</a></li>
-                    <li class="active">Circle Plazz Wedding Vendor</li>
+                    <li class="active"><?php echo isset($lstK100[0]['KV101']) ? $lstK100[0]['KV101'] : '' ?></li>
                 </ol>
             </div>
         </div>
@@ -154,12 +154,12 @@
             </div>
             <div class="col-md-offset-1 col-md-7 page-description">
                 <div class="vendr-profile-info">
-                    <h1>Circle Plazz Wedding Vendor</h1>
+                    <h1><?php echo isset($lstK100[0]['KV101']) ? $lstK100[0]['KV101'] : '' ?></h1>
                     <p class="profile-address"><i class="fa fa-map-marker"></i> Western Gateway, Royal Victoria Dock London.</p>
-                    <p><span class="profile-email"><i class="fa fa-envelope"></i>Info@weddingvenue.com</span><span class="profile-website"><i class="fa fa-link"></i><a href="#">http://www.circleplazz.com</a></span></p>
+                    <p><span class="profile-email"><i class="fa fa-envelope"></i><?php echo isset($lstK100[0]['KV102']) ? isset($lstK100[0]['KV102']) : '' ?></span><span class="profile-website"><i class="fa fa-link"></i><a href="#">http://www.circleplazz.com</a></span></p>
                 </div>
                 <div class="venue-details">
-                    <h2>About The Circle Plazz Wedding Vendor</h2>
+                    <h2>About The <?php echo isset($lstK100[0]['KV101']) ? $lstK100[0]['KV101'] : '' ?></h2>
                     <p class="lead">Latin words combined with a handful of model sentence sum which one generated Lorem Ipsum is therefore always free from repetition injected humour or non characteristic words etc.</p>
                     <p>Quisque laoreet mi libero, et tempus lacus venenatis eget. Nulla vitaeipsum inturpis blandit congue ofer ornare inleo. Nulla nibhmi sagittis necaliquet pharetra vitae turpis. Nam tristique mauris necultricies its tristiqu. orbilitelit molestie eget tincidunt luctus consequat sitameturna.</p>
                     <p>Aenean sapienest, rutrum malesuada quamuis tristique tincinibh hasellusut elementum not semlass and aptent taciti sociosqu ad litorarutrum malesuada quamuis tristique torquent per conubia nostra permite  inceptos our its it himenaeos aecsed laoreet diam. Crasut auctor ipsusque commodo suscipit onet tristiques viverrarcu idaugue blandit ultricies nibhrhoncus rutrum malesuada tristique.</p>

@@ -4,11 +4,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Wedding</title>
+        <title>ALBUMSO.COM - CHIA SẺ KỶ NIỆM HẠNH PHÚC</title>
         <!-- Bootstrap -->
         <link href="<?php echo base_url(); ?>public_html/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Template style.css -->
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public_html/css/style.css">
+
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public_html/css/owl.carousel.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public_html/css/owl.theme.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public_html/css/owl.transitions.css">
@@ -20,6 +19,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <!-- favicon icon -->
         <link rel="shortcut icon" href="<?php echo base_url(); ?>public_html/images/favicon.ico" type="image/x-icon">
+        <!-- Template style.css -->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public_html/css/style.css">
         <script src="<?php echo base_url(); ?>public_html/js/jquery.min.js"></script> 
     </head>
     <body>
@@ -39,11 +40,11 @@
                     </div>
                     <div class="col-md-6 top-links">
                         <ul class="listnone">
-                            <?php if (isset($_SESSION['user']) && $_SESSION['user']['status_login'] == 1) : ?>
-                                <li><a href="/login/logout"><?php echo  $_SESSION['user']['HOTEN'] ?></a></li>
+                            <?php  if (isset($_SESSION['user']) && $_SESSION['user']['status_login'] == 1) : ?>
+                                <li><a href="/admin/<?php echo isset($_SESSION['user']['_id']) ? $_SESSION['user']['_id'] : 0 ?>"><?php echo isset($_SESSION['user']['KV101']) ? $_SESSION['user']['KV101'] : $_SESSION['user']['NV101'] ?></a></li>
+                                <li><a href="/login/logout">Thoát</a></li>
                             <?php else : ?>
-                                <li><a href="/login/registryviewer" class=" ">I m couple</a></li>
-                                <li><a href="/login/registryvendor">Đăng ký</a></li>
+                                <li><a href="/login/registry">Đăng ký</a></li>
                                 <li><a href="<?php echo base_url() ?>login">Đăng nhập</a></li>
                             <?php endif; ?>
                             <li><a role="button" data-toggle="collapse" href="#searcharea" aria-expanded="false" aria-controls="searcharea"> <i class="fa fa-search"></i> </a></li>
@@ -62,11 +63,40 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="active"><a href="<?php echo base_url(); ?>home">Home</a></li>
-                            <li><a href="<?php echo base_url(); ?>provider">Provider</a></li>
-                            <li><a href="<?php echo base_url(); ?>viewer">Viewer</a></li>
-                            <li><a href="<?php echo base_url(); ?>event">Event</a></li>
-                            <li><a href="<?php echo base_url(); ?>album">Album</a></li>
+                            <li class="<?php
+                            if ($this->router->fetch_class() == 'home') {
+                                echo 'active';
+                            }
+                            ?>"><a href="<?php echo base_url(); ?>home">Trang Home</a></li>
+                            <li class="<?php
+                            if ($this->router->fetch_class() == 'provider') {
+                                echo 'active';
+                            }
+                            ?>"><a href="<?php echo base_url(); ?>provider">Danh Sách Studio</a></li>
+                                <?php if (isset($_SESSION['user']['KV102']) && $_SESSION['user']['KV102'] == 'nguyenthanhduy91@gmail.com') : ?>
+                                <li class="<?php
+                                if ($this->router->fetch_class() == 'viewer') {
+                                    echo 'active';
+                                }
+                                ?>"><a href="<?php echo base_url(); ?>viewer">Viewer</a></li>
+                                <?php endif; ?>
+
+                            <li class="<?php
+                            if ($this->router->fetch_class() == 'place') {
+                                echo 'active';
+                            }
+                            ?>"><a href="<?php echo base_url('place.html'); ?>">Địa Điểm Đẹp</a></li>
+
+                            <li class="<?php
+                            if ($this->router->fetch_class() == 'event') {
+                                echo 'active';
+                            }
+                            ?>"><a href="<?php echo base_url(); ?>event">Sự Kiện Hot</a></li>
+                            <li class="<?php
+                            if ($this->router->fetch_class() == 'album') {
+                                echo 'active';
+                            }
+                            ?>"><a href="<?php echo base_url(); ?>album">Album Đẹp</a></li>
                         </ul>
                     </div>
 
